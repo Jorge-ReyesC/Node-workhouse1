@@ -1,8 +1,8 @@
 const config = {
-    user: 'Jreyes_SQL',
-    password: 'Jorge1998',
-    server: '192.168.50.190',
-    database: 'Jreyes_SBD'
+    user: 'Administrador',
+    password: 'gt1Jw3fZEn',
+    server: 'projectangular-server.database.windows.net',
+    database: 'projectangular-db'
 }
 
 module.exports = config;

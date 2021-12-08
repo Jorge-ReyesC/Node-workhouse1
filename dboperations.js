@@ -38,7 +38,7 @@ async function getProductos(){
     }
 }
 
-//obtener cateogira desde sql a node
+//obtener categoria desde sql a node
 
 
 async function getCategoria(){
@@ -51,9 +51,37 @@ async function getCategoria(){
     }
 }
 
+//obtener comentarios desde sql a node
+
+
+async function getComentarios(){
+    try{
+        let pool = await sql.connect(config);
+        let comentarios = await pool.request().query("select * from comentarios");
+        return comentarios.recordsets;
+    }catch(error){
+        console.log(error);
+    }
+}
+
+//obtener chat desde sql a node
+
+
+async function getChat(){
+    try{
+        let pool = await sql.connect(config);
+        let chat = await pool.request().query("select * from chat");
+        return chat.recordsets;
+    }catch(error){
+        console.log(error);
+    }
+}
+
 module.exports={
     getAlumnos : getAlumnos,
     getClientes:getClientes,
     getProductos:getProductos,
-    getCategoria:getCategoria
+    getCategoria:getCategoria,
+    getComentarios:getComentarios,
+    getChat:getChat
 }

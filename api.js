@@ -3,6 +3,7 @@ var Alumno = require ('./alumno');
 var clientes = require ('./clientes');
 var productos = require ('./productos');
 var categoria = require('./productos');
+var comentarios = require('./comentarios');
 
 const dboperations = require ('./dboperations');
 
@@ -49,6 +50,20 @@ async function obtenerCategoria(request,response){
  }
 app.get('/categoria', obtenerCategoria)
 
+async function obtenerComentarios(request,response){
+    var resultado = await dboperations.getComentarios();
+    response.send(resultado);    
+ }
+app.get('/comentarios', obtenerComentarios)
+
+async function obtenerChat(request,response){
+    var resultado = await dboperations.getChat();
+    response.send(resultado);    
+ }
+app.get('/chat', obtenerChat)
+
+
+
 var port = process.env.PORT || 8091;
 app.listen(port);
-console.log('La api funciona y esta en el puerto'+ port);
+console.log('La api funciona y esta en el puerto: '+ port);
