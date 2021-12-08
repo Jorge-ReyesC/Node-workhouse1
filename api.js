@@ -4,6 +4,8 @@ var clientes = require ('./clientes');
 var productos = require ('./productos');
 var categoria = require('./productos');
 var comentarios = require('./comentarios');
+var chat = require('./chat');
+var equipo = require('./equipo');
 
 const dboperations = require ('./dboperations');
 
@@ -61,6 +63,13 @@ async function obtenerChat(request,response){
     response.send(resultado);    
  }
 app.get('/chat', obtenerChat)
+
+async function obtenerEquipo(request,response){
+    var resultado = await dboperations.getEquipo();
+    response.send(resultado);    
+ }
+app.get('/equipo', obtenerEquipo)
+
 
 
 

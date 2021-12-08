@@ -77,11 +77,26 @@ async function getChat(){
     }
 }
 
+//obtener equipo desde sql a node
+
+
+async function getEquipo(){
+    try{
+        let pool = await sql.connect(config);
+        let equipo = await pool.request().query("select * from equipo");
+        return equipo.recordsets;
+    }catch(error){
+        console.log(error);
+    }
+}
+
 module.exports={
     getAlumnos : getAlumnos,
     getClientes:getClientes,
     getProductos:getProductos,
     getCategoria:getCategoria,
     getComentarios:getComentarios,
-    getChat:getChat
+    getChat:getChat,
+    getEquipo:getEquipo
+    
 }
