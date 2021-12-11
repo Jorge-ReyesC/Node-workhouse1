@@ -90,6 +90,19 @@ async function getEquipo(){
     }
 }
 
+//obtener locales desde sql a node
+
+
+async function getLocales(){
+    try{
+        let pool = await sql.connect(config);
+        let locales = await pool.request().query("select * from locales");
+        return locales.recordsets;
+    }catch(error){
+        console.log(error);
+    }
+}
+
 module.exports={
     getAlumnos : getAlumnos,
     getClientes:getClientes,
@@ -97,6 +110,7 @@ module.exports={
     getCategoria:getCategoria,
     getComentarios:getComentarios,
     getChat:getChat,
-    getEquipo:getEquipo
+    getEquipo:getEquipo,
+    getLocales:getLocales
     
 }

@@ -6,6 +6,8 @@ var categoria = require('./productos');
 var comentarios = require('./comentarios');
 var chat = require('./chat');
 var equipo = require('./equipo');
+var locales = require('./locales');
+
 
 const dboperations = require ('./dboperations');
 
@@ -69,6 +71,12 @@ async function obtenerEquipo(request,response){
     response.send(resultado);    
  }
 app.get('/equipo', obtenerEquipo)
+
+async function obtenerLocales(request,response){
+    var resultado = await dboperations.getLocales();
+    response.send(resultado);    
+ }
+app.get('/locales', obtenerLocales)
 
 
 
